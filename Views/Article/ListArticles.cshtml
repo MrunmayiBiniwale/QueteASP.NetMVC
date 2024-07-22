@@ -1,0 +1,43 @@
+﻿@model List<QueteASP.NetMVC.Models.Article>
+
+<h3>Articles List</h3>
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><a href="@Url.Action("AddArticle", "Article")" class="btn btn-secondary">New Article</a></td>
+        </tr>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model is not null && Model.Count > 0)
+        {
+            @foreach (var article in Model)
+            {
+                <tr>
+                    <td>@article.Id</td>
+                    <td>@article.Title</td>
+                    <td>@article.Content</td>
+                    <td><a href="@Url.Action("EditArticle", "Article", new { id = article.Id })">Edit</a></td>
+                    <td><a href="#" onclick="deleteArticle(@article.Id)(); return false;">Delete</a></td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr colspan="5">
+                <td>No data to display.</td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+@* <a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Back</a> *@

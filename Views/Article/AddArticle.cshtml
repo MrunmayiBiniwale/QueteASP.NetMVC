@@ -1,0 +1,31 @@
+﻿@model QueteASP.NetMVC.Models.Article
+
+<div>
+    <form id="formAddArticle" method="post" action="@Url.Action("SaveArticle", "Article")">
+        <h3>Add an Article</h3>
+        <table>
+            <tr><td>@Html.DisplayNameFor(a => a.Title)</td></tr>
+            <tr>
+                <td>
+                    @Html.TextBoxFor(a => a.Title)
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr><td>@Html.DisplayNameFor(a => a.Content)</td></tr>
+            <tr>
+                <td>
+                    @Html.TextBoxFor(a => a.Content)
+                    @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a href="@Url.Action("ListArticles", "Article", Model)" class="btn btn-secondary">Cancel</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+</div>
